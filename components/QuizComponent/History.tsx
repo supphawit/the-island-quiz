@@ -2,6 +2,16 @@ import { useAuth } from "@/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, memo } from "react";
 
+const getGradeResult = (score: number): { text: string; color: string } => {
+  if (score >= 8) {
+    return { text: "Excellent", color: "text-green-400" };
+  } else if (score >= 5) {
+    return { text: "Pass", color: "text-yellow-400" };
+  } else {
+    return { text: "Fail", color: "text-red-400" };
+  }
+};
+
 export const History = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const { playerProfile, sessionId } = useAuth(); // Add sessionId from useAuth
@@ -83,35 +93,44 @@ export const History = memo(() => {
                     No game history yet
                   </p>
                 ) : (
-                  history.map((session, index) => (
-                    <motion.div
-                      key={session.sessionId}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className={`bg-white/5 rounded-xl p-4 space-y-2`}
-                    >
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                          <span className="text-white/70">
-                            Game {index + 1}
-                          </span>
-                          {session.sessionId === sessionId && (
-                            <span
-                              className="px-2 py-0.5 text-xs font-medium 
-                                         bg-blue-500 text-white rounded-full"
-                            >
-                              Current
+                  history.map((session, index) => {
+                    const grade = getGradeResult(session.totalScore || 0);
+                    return (
+                      <motion.div
+                        key={session.sessionId}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className={`bg-white/5 rounded-xl p-4 space-y-2`}
+                      >
+                        <div className="flex flex-col gap-2">
+                          <div className="flex justify-between items-center">
+                            <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-2">
+                                <span className="text-white/70">
+                                  Game {index + 1}
+                                </span>
+                                {session.sessionId !== sessionId && (
+                                  <span className={`text-sm font-medium ${grade.color}`}>
+                                    • {grade.text}
+                                  </span>
+                                )}
+                                {session.sessionId === sessionId && (
+                                  <span className="px-2 py-0.5 text-xs font-medium 
+                             bg-blue-500 text-white rounded-full">
+                                    Current
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                            <span className="text-white font-medium">
+                              Score: {session.totalScore ?? 0}/{session.totalQuestions ?? 0}
                             </span>
-                          )}
+                          </div>
                         </div>
-                        <span className="text-white font-medium">
-                          Score: {session.totalScore ?? 0}/
-                          {session.totalQuestions ?? 0}
-                        </span>
-                      </div>
-                    </motion.div>
-                  ))
+                      </motion.div>
+                    );
+                  })
                 )}
               </div>
             </motion.div>
