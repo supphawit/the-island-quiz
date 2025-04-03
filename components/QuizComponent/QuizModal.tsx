@@ -3,14 +3,12 @@ import React from "react";
 
 interface ModalProps {
   showAnswerModal: boolean;
-  setShowAnswerModal: (show: boolean) => void;
   isCorrect: boolean;
   onNext: () => void;
 }
 
 const QuizModal: React.FC<ModalProps> = ({
   showAnswerModal,
-  setShowAnswerModal,
   isCorrect,
   onNext,
 }) => {
@@ -19,13 +17,11 @@ const QuizModal: React.FC<ModalProps> = ({
       {showAnswerModal && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
-          onClick={() => setShowAnswerModal(false)}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            onClick={(e) => e.stopPropagation()}
             className="bg-white/10 p-6 rounded-2xl border border-white/20 shadow-2xl max-w-sm w-full mx-4"
           >
             <div className="flex flex-col gap-4 py-8 items-center">

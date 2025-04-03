@@ -56,7 +56,6 @@ const QuizIsland: React.FC = () => {
 
         <QuizModal
           showAnswerModal={state.showAnswerModal}
-          setShowAnswerModal={actions.setShowAnswerModal}
           isCorrect={state.isCorrectAnswer}
           onNext={actions.handleNextQuestion}
         />
