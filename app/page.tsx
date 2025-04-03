@@ -1,15 +1,18 @@
-import HomePage from "@/components/Home";
+import { Suspense } from "react";
+import { LoadingOverlay } from "@/components/common/LoadingOverlay";
+import ClientQuizIsland from "@/components/ClientQuizIsland";
+
+export const metadata = {
+  title: "Quiz Island - Test Your Knowledge",
+  description: "Challenge yourself with our interactive quiz game!",
+};
 
 export default function Home() {
   return (
-    <HomePage
-      // question="Which one what is correct choice?"
-      // choices={[
-      //   { id: 1, text: "Choice 1" },
-      //   { id: 2, text: "Choice 2" },
-      //   { id: 3, text: "Choice 3" },
-      //   { id: 4, text: "Choice 4" },
-      // ]}
-    />
+    <main className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
+      <Suspense fallback={<LoadingOverlay isLoading={true} />}>
+        <ClientQuizIsland />
+      </Suspense>
+    </main>
   );
 }

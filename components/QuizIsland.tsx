@@ -49,9 +49,10 @@ const QuizIsland: React.FC = () => {
     <>
       <LoadingOverlay isLoading={state.isLoading} />
 
-      <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 p-4 relative">
+      <div className="flex flex-col min-h-screen p-4 ">
         <QuizHeader />
         <History />
+
         <QuizContent state={state} actions={actions} />
 
         <QuizModal
