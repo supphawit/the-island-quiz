@@ -11,3 +11,7 @@
     --foreground: #374151;
   }
 }
+
+button {
+  cursor: pointer;
+}
