@@ -37,7 +37,7 @@ export const useQuizLogic = (): [QuizState, QuizActions] => {
             ...prev,
             isGameComplete: true,
             isStarted: false,
-            isLoading: false, // Make sure to reset loading
+            isLoading: false,
           }));
           startNewQuestion();
           return;
@@ -71,7 +71,7 @@ export const useQuizLogic = (): [QuizState, QuizActions] => {
 
         saveProfile({
           ...playerProfile,
-          name: playerProfile?.name || state.playerName,
+          name: state.playerName,
           history: sessionExists
             ? updatedHistory
             : [

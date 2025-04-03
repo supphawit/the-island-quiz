@@ -67,10 +67,7 @@ export const QuizSummary: React.FC<QuizSummaryProps> = ({ onPlayAgain }) => {
               animate={{ y: 0 }}
               className="text-3xl font-bold text-white"
             >
-              {/* Game Complete! 🎮 */}
-              {/* <p className="text-lg font-medium"> */}
-              Player: {summaryData.playerName}
-              {/* </p> */}
+              Player: {playerProfile?.name || summaryData.playerName}
             </motion.h2>
 
             <div className="space-y-6">

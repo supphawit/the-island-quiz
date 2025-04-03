@@ -37,7 +37,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const saveProfile = (player: PlayerProfile) => {
-    setPlayerProfile(player);
+    setPlayerProfile({ ...player });
     localStorage.setItem("player", JSON.stringify(player));
   };
 
