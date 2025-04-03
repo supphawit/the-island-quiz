@@ -47,15 +47,19 @@ Follow these steps to run the application locally:
     ```bash
     cd the-island-quiz
     ```
-3. Install dependencies:
+3. Create a copy of the .env.example file and rename it to .env:
+    ```bash
+    cp .env.example .env
+    ```
+5. Install dependencies:
     ```bash
     npm install
     ```
-4. Run the development server:
+6. Run the development server:
     ```bash
     npm run dev
     ```
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+7. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
 ### Building for Production
 1. To build the application for production, use the following command:
