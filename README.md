@@ -31,6 +31,9 @@ The Island Quiz is a game application built with Next.js and TypeScript. It allo
 - Stores the player's name and score history locally on the device.
 - Includes a History button that allows the user to view their past game results.
 
+### 8. Responsive Mobile-First Design
+- The application is built with a mobile-first approach, ensuring a seamless and optimized experience on mobile devices and responsive layouts on larger screens.
+
 ## Installation and Running the Application
 
 Follow these steps to run the application locally:
