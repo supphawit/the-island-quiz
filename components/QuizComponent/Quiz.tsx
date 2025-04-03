@@ -7,13 +7,11 @@ import { submitAnswer } from "@/services/quizService";
 import { useAuth } from "@/context/AuthContext";
 import { QuizChoice } from "./QuizChoice";
 import { QuizTimer } from "./QuizTimer";
-// import { PlayerProfile } from "@/types/auth";
 
 interface QuestionsProps {
   title: string;
   choices: Choice[];
   setShowAnswerModal: (show: boolean) => void;
-  // setIsCorrectAnswer: (isCorrect: boolean) => void;
   onAnswer: (answer: boolean) => void;
 }
 
@@ -29,7 +27,7 @@ const Quiz: React.FC<QuestionsProps> = ({
 
   useEffect(() => {
     setStartTime(Date.now());
-  }, [title]); 
+  }, [title]);
 
   const handleSelectChoice = useCallback(
     async (questionId: string, choiceId: string) => {

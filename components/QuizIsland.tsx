@@ -1,15 +1,17 @@
 "use client";
 
 import React, { memo } from "react";
+
+import { useQuizLogic } from "@/hooks/useQuizLogic";
+import { QuizActions, QuizState } from "@/types/quiz";
+
 import Quiz from "./QuizComponent/Quiz";
 import QuizModal from "./QuizComponent/QuizModal";
-import { QuizStartButton } from "./QuizComponent/QuizStartButton";
 import { LoadingOverlay } from "./common/LoadingOverlay";
-import { useQuizLogic } from "@/hooks/useQuizLogic";
+import { QuizHeader } from "./QuizComponent/QuizHeader";
+import { QuizStart } from "./QuizComponent/QuizStart";
 import { QuizSummary } from "./QuizComponent/QuizSummary";
 import { History } from "./QuizComponent/History";
-import { QuizHeader } from "./QuizComponent/QuizHeader";
-import { QuizActions, QuizState } from "@/types/quiz";
 
 const QuizContent = memo<{
   state: QuizState;
@@ -21,7 +23,7 @@ const QuizContent = memo<{
 
   if (!state.isStarted) {
     return (
-      <QuizStartButton
+      <QuizStart
         isLoading={state.isLoading}
         startQuiz={actions.handleStartQuiz}
         playerName={state.playerName}
